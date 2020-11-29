@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         //login button event handler
+         const loginBtn = document.getElementById("login");
+        loginBtn.addEventListener("click" , function(){
+            const loginArea = document.getElementById("login-area");
+            loginArea.style.display = "none";
+        const transactionArea = document.getElementById("transaction-area");
+        transactionArea.style.display = "block";
+       
+        })
+
+        //deposit button event handler
+        const depositBtn = document.getElementById("addDeposit");
+        depositBtn.addEventListener("click",function(){
+            const depositAmount = document.getElementById("depositAmount").value;//jehetu input text tay direct value hisabe dhore nilam
+            const depositNum = parseFloat(depositAmount);
+            const currentDeposit = document.getElementById("currentDeposit").innerText;//string hisabe dhore nilam
+            const currentDepositNum = parseFloat(currentDeposit);//string number e convert
+            const total = depositNum + currentDepositNum;//2 ta value add holo
+            console.log(total);
+            document.getElementById('currentDeposit').innerText = total;//previous and current valus add hoye show korbe deposit e
+
+            //balance e total ballance add kora:
+
+            const currentBalance = document.getElementById("currentBalance").innerText;
+            const currentBalanceNum = parseFloat(currentBalance);
+            const totalBalance = currentBalanceNum + depositNum;
+            document.getElementById("currentBalance").innerText = totalBalance;
+           
+            
+
+            document.getElementById("depositAmount").value = ''; //input text clear hoye gelo
+            
+
+
+
+
+            const withdrawBtn = document.getElementById("addWithdraw");
+            withdrawBtn.addEventListener("click",function(){
+            const withdrawAmount = document.getElementById("withdrawAmount").value;//jehetu input text tay direct value hisabe dhore nilam
+            const withdrawNum = parseFloat(withdrawAmount);
+
+
+            updateSpan2Text('currentWithdraw',withdrawNum);
+            updateSpan2Text('currentBalance',withdrawNum);
+
+
+            function updateSpan2Text(id,withdrawNum){
+            const current = document.getElementById(id).innerText;
+            const currentNum = parseFloat(current);
+            const total = currentNum - withdrawNum;
+            document.getElementById(id).innerText = total;
+        }
+        })
+    </script>
+</body>
+</html>
